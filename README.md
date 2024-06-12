@@ -1,1 +1,1 @@
-This repository is just a store of my commonly used scripts throughout my ServiceNow journey
+This repository is used to store a list of scripts that I have used in ServiceNow that may or may not be reusable in the future.
