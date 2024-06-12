@@ -1,0 +1,11 @@
+/*
+Get unique categories per incident state
+*/
+
+var ga = new GlideAggregate('incident');
+ga.groupBy('state');
+ga.addAggregate('COUNT(DISTINCT', 'category');
+ga.query();
+while(ga.next()){
+    gs.info(ga.state.getDisplayValue() + ' - ' + ga.getAggregate('COUNT(DISTINCT', 'category'));
+}
