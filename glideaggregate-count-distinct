@@ -1,5 +1,5 @@
 /*
-Get unique categories per incident state
+Prints unique categories per incident state
 */
 
 var ga = new GlideAggregate('incident');
