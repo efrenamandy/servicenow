@@ -1,6 +1,6 @@
 /** 
- * This script creates field styles for active, u_active, inactive field.
- * This helps too see records that are active VS inactive from list view much quicker.
+ * This script creates field styles for active, u_active, and inactive field.
+ * This helps to see records that are active VS inactive from list view much quicker.
  */
 
 (function() {
