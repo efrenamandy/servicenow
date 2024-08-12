@@ -46,7 +46,7 @@
         var styleGr = new GlideRecord('sys_ui_style');
         styleGr.newRecord();
         styleGr.element = field;
-        styleGr.value = '0';
+        styleGr.value = '1';
         styleGr.style = 'background-color:tomato';
         styleGr.name = table;
         styleGr.insert();
@@ -56,7 +56,7 @@
         var styleGr = new GlideRecord('sys_ui_style');
         styleGr.newRecord();
         styleGr.element = field;
-        styleGr.value = '1';
+        styleGr.value = '0';
         styleGr.style = 'background-color:limegreen';
         styleGr.name = table;
         styleGr.insert();
