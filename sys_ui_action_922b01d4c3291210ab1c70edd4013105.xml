@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<unload unload_date="2024-10-25 14:23:37">
+<sys_ui_action action="INSERT_OR_UPDATE">
+<action_name>pdi_move_to_default_update_set</action_name>
+<active>true</active>
+<client>true</client>
+<client_script_v2><![CDATA[function onClick(g_form) {
+
+}]]></client_script_v2>
+<comments/>
+<condition>gs.hasRole('admin');</condition>
+<form_action>false</form_action>
+<form_button>false</form_button>
+<form_button_v2>false</form_button_v2>
+<form_context_menu>false</form_context_menu>
+<form_link>false</form_link>
+<form_menu_button_v2>false</form_menu_button_v2>
+<form_style/>
+<format_for_configurable_workspace>false</format_for_configurable_workspace>
+<hint/>
+<isolate_script>false</isolate_script>
+<list_action>true</list_action>
+<list_banner_button>false</list_banner_button>
+<list_button>false</list_button>
+<list_choice>true</list_choice>
+<list_context_menu>false</list_context_menu>
+<list_link>false</list_link>
+<list_save_with_form_button>false</list_save_with_form_button>
+<list_style/>
+<messages/>
+<name>Move to Default Update Set</name>
+<onclick>confirmMoveToDefault();</onclick>
+<order>100</order>
+<script><![CDATA[function confirmMoveToDefault() {
+
+    var sysIds = g_list.getChecked();
+    if (!sysIds || sysIds.length == 0)
+        return;
+
+    var customerUpdates = sysIds.split(',').length === 1 ? "1 Customer Update" : sysIds.split(',').length + " Customer Updates";
+
+    var confirmationMsg = customerUpdates + ' will be moved to "Default" Update Set. Are you sure you want to proceed?';
+
+    var dialog = new GlideModal('glide_confirm_standard');
+    dialog.setTitle(new GwtMessage().getMessage('Confirmation'));
+    dialog.setPreference('warning', true);
+    dialog.setPreference('title', new GwtMessage().getMessage(confirmationMsg));
+    dialog.setPreference('onPromptComplete', function() {
+        var ga = new GlideAjax('PDIAdminUtils');
+        ga.addParam('sysparm_name', 'moveCustomerUpdatesToDefault');
+        ga.addParam('sysparm_sys_ids', sysIds);
+        ga.getXMLAnswer(function() {
+            g_navigation.reloadWindow(window);
+        });
+    });
+    dialog.render();
+
+}]]></script>
+<show_insert>true</show_insert>
+<show_multiple_update>false</show_multiple_update>
+<show_query>false</show_query>
+<show_update>true</show_update>
+<sys_class_name>sys_ui_action</sys_class_name>
+<sys_created_by>efren.amandy</sys_created_by>
+<sys_created_on>2024-10-25 14:20:53</sys_created_on>
+<sys_domain>global</sys_domain>
+<sys_domain_path>/</sys_domain_path>
+<sys_id>922b01d4c3291210ab1c70edd4013105</sys_id>
+<sys_mod_count>2</sys_mod_count>
+<sys_name>Move to Default Update Set</sys_name>
+<sys_overrides display_value=""/>
+<sys_package display_value="Global" source="global">global</sys_package>
+<sys_policy/>
+<sys_scope display_value="Global">global</sys_scope>
+<sys_update_name>sys_ui_action_922b01d4c3291210ab1c70edd4013105</sys_update_name>
+<sys_updated_by>efren.amandy</sys_updated_by>
+<sys_updated_on>2024-10-25 14:23:03</sys_updated_on>
+<table>sys_update_xml</table>
+<ui11_compatible>true</ui11_compatible>
+<ui16_compatible>false</ui16_compatible>
+</sys_ui_action>
+</unload>
